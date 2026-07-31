@@ -43,6 +43,33 @@ Ventaja lateral y nada menor: un validador tiene **mucha menos superficie de sop
 - El corte gratis/pago está donde acota el soporte: el plan gratuito da un **número**, no una conversación. Quien quiere la lista, paga.
 - Anual, no mensual: a este precio el cobro mensual se come el margen en comisiones.
 
+## Paso 1 ejecutado — lectura del foro de soporte, 31 de julio de 2026
+
+32 hilos leídos en el foro de `google-listings-and-ads`. **Contradice parcialmente la hipótesis de partida.**
+
+**Lo que la gente escribe de verdad, con sus palabras:**
+
+| Frase textual | Frecuencia |
+|---|---|
+| "Products won't sync — 0 pushed, no sync jobs scheduled" | dominante |
+| "0 products successfully submitted to Google" | dominante |
+| "Active 0, Pending 0, Disapproved 0, **Not Synced 262**" | dominante |
+| "Plugin Broke my Site" / "White Screen After Admin Login" / "fatal error in admin" | muy frecuente |
+| "cannot reconnect existing Merchant Center after OAuth" | frecuente |
+| "catalogue entier resoumis toutes les heures, 190 598 tâches Action Scheduler" | casos graves |
+| Algo sobre productos **rechazados** | **1 hilo de 32** |
+
+**Corrección honesta**: el posicionamiento original —"te han rechazado 340 productos y no sabes cuáles"— se apoyaba en artículos de Productsup y Channable, que son *proveedores de feeds haciendo marketing de contenidos*, no usuarios describiendo su dolor. Eso es evidencia de segunda mano y la traté como si fuera de primera.
+
+**Pero el instrumento está sesgado y no refuta la hipótesis**: quien escribe en el foro de soporte de un plugin escribe sobre el plugin roto. Quien tiene productos rechazados acude a la ayuda de Merchant Center, no al foro de WordPress. La ausencia de hilos sobre rechazos ahí no es prueba de ausencia de dolor.
+
+**Lo que sí aporta**: `Not Synced 262` con `Disapproved 0` es también un fallo de diagnóstico — el comerciante no sabe por qué no ha subido nada. Es el mismo hueco, un paso antes en la tubería. El producto probablemente deba cubrir las dos preguntas:
+
+1. *¿por qué no ha subido nada?*
+2. *¿por qué me han rechazado esto y qué es?*
+
+**Decisión**: no reescribir la página basándome en más inferencias mías. La pregunta que se lanza en los canales debe ser lo bastante neutra para capturar ambas, y que respondan ellos. Texto revisado abajo con su vocabulario real.
+
 ## Dónde enseñarla
 
 Por orden de esfuerzo. **En ninguna se vende: se pregunta.**
@@ -80,15 +107,17 @@ Campo trampa `_gotcha` incluido: el plan gratuito son 50 envíos al mes y el spa
 
 ## Texto para los canales en español
 
-**Post en grupo de WooCommerce / Reddit español** — pregunta, no anuncio:
+**Post en grupo de WooCommerce / Reddit español** — pregunta, no anuncio. Reescrito tras el paso 1 con el vocabulario que usa la gente de verdad, y deliberadamente abierto a los dos problemas para no inducir la respuesta:
 
-> ¿Cómo averiguáis **qué productos concretos** os está rechazando Merchant Center?
+> Cuando Merchant Center no os sube los productos, ¿cómo averiguáis por qué?
 >
-> Google te dice "340 productos desaprobados por datos de producto" y se queda tan ancho. Para encontrar cuáles y por qué he acabado exportando el CSV y revisándolo a mano, y con 2.000 referencias es inviable.
+> Me refiero a los dos casos. El panel que pone **Active 0, Pending 0, Disapproved 0, Not Synced 262** y ninguna pista de qué pasa. Y el otro, cuando sí suben pero te desaprueban una parte y solo te dicen "problemas de datos de producto", sin decirte cuáles.
 >
-> Las dos causas que más veo son el precio del feed sin coincidir con el de la página —normalmente IVA incluido contra IVA excluido— y EAN con el dígito de control mal.
+> Yo he acabado exportando el CSV y mirándolo a mano. Con 200 referencias es tedioso; con 2.000 es inviable.
 >
-> ¿Lo estáis resolviendo con alguna herramienta o también a mano? Estoy pensando en montarme algo y prefiero preguntar antes de perder el tiempo.
+> ¿Lo resolvéis con alguna herramienta, con la agencia, o a mano como yo? Pregunto antes de ponerme a montar nada.
+
+**Por qué está redactado así**: menciona los dos síntomas con las palabras exactas del foro —`Not Synced`, `Disapproved 0`— sin decidir cuál duele más. Si responden mayoritariamente sobre uno, eso decide el producto. Si el post afirmara cuál es el problema, la respuesta ya no sería información.
 
 **Regla al responder**: si alguien pregunta qué estás montando, entonces sí enlazas. Si no pregunta nadie, el enlace no aparece — y eso es información, no fracaso.
 
