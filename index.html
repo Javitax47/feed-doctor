@@ -70,6 +70,16 @@
   }
   button:hover { opacity: .9; }
   .note { font-size: .85rem; color: var(--muted); margin-top: .75rem; }
+  .detail { display: block; margin-top: 1rem; font-size: .9rem; }
+  .detail span { color: var(--muted); }
+  textarea {
+    width: 100%; margin-top: .4rem; padding: .7rem .85rem; border: 1px solid var(--line);
+    border-radius: .4rem; background: var(--bg); color: var(--fg); font: inherit;
+    font-size: .95rem; resize: vertical;
+  }
+  .status { font-size: .95rem; margin-top: .75rem; min-height: 1.4em; }
+  .status.ok { color: var(--accent); font-weight: 600; }
+  .status.err { color: var(--bad); }
   footer { border-top: 1px solid var(--line); margin-top: 3rem; padding: 2rem 0 4rem; color: var(--muted); font-size: .9rem; }
   a { color: inherit; }
 </style>
@@ -162,8 +172,11 @@
   <h2>It does not exist yet</h2>
   <p>This page is here to find out whether it should. Nothing is built, there is no download, and there is no beta list I am trying to inflate.</p>
   <p>If a tool like this would be useful to you, say so — and tell me what your feed actually gets rejected for, because that is what decides what gets built first.</p>
-  <form action="https://formspree.io/f/REEMPLAZAR" method="POST">
-    <input type="email" name="email" placeholder="your@email.com" required>
+  <!-- The action attribute is what makes this work with JavaScript disabled or
+       broken. The script below upgrades it to stay on the page; it is an
+       enhancement, never a requirement. -->
+  <form id="interest" action="https://formspree.io/f/mwvgjjee" method="POST">
+    <input type="email" name="email" placeholder="your@email.com" required aria-label="Your email">
     <input type="hidden" name="_subject" value="Feed Doctor — interest">
     <!-- Formspree discards anything that fills this. Bots do; humans cannot
          see it. Spam counts against the 50/month free quota, so this is not
@@ -171,7 +184,10 @@
     <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
     <button type="submit">Tell me when it exists</button>
   </form>
-  <p class="note">One message when there is something to try. Nothing else, ever.</p>
+  <label class="detail" for="rejects">What does your feed actually get rejected for? <span>(optional, and the most useful thing you can tell me)</span></label>
+  <textarea id="rejects" name="rejections" form="interest" rows="3" placeholder="e.g. price mismatch on about 200 items, no idea which ones"></textarea>
+  <p class="note" id="formnote">One message when there is something to try. Nothing else, ever.</p>
+  <p class="status" id="formstatus" role="status" aria-live="polite"></p>
 </div>
 
 <footer>
@@ -180,3 +196,55 @@
 </footer>
 
 </div>
+
+<script>
+// Progressive enhancement over the plain form POST above. Without this the
+// form still submits and still works -- it just navigates away to Formspree's
+// own page, which loses the visitor mid-decision. With it, they stay here.
+(function () {
+  var form = document.getElementById('interest');
+  var status = document.getElementById('formstatus');
+  var note = document.getElementById('formnote');
+  if (!form || !window.fetch || !window.FormData) return;
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var button = form.querySelector('button[type=submit]');
+    var original = button.textContent;
+    button.disabled = true;
+    button.textContent = 'Sending…';
+    status.className = 'status';
+    status.textContent = '';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' }
+    })
+      .then(function (response) {
+        return response.json().catch(function () { return {}; })
+          .then(function (data) { return { ok: response.ok, data: data }; });
+      })
+      .then(function (result) {
+        if (!result.ok) throw result.data;
+        form.style.display = 'none';
+        document.getElementById('rejects').style.display = 'none';
+        document.querySelector('.detail').style.display = 'none';
+        note.style.display = 'none';
+        status.className = 'status ok';
+        status.textContent = 'Noted — thank you. You will hear from me once, when there is something to try.';
+      })
+      .catch(function (data) {
+        button.disabled = false;
+        button.textContent = original;
+        status.className = 'status err';
+        // Surface Formspree's own message when it sent one; it explains the
+        // cause far better than a generic failure string.
+        var detail = data && data.errors && data.errors.length
+          ? data.errors.map(function (e) { return e.message; }).join('. ')
+          : 'Something went wrong sending that. Email me directly instead.';
+        status.textContent = detail;
+      });
+  });
+})();
+</script>
