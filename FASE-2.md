@@ -146,22 +146,27 @@ La primera versión de este borrador —"I'm a student thinking about building a
 
 La excepción de la 6 no se aprovecha disimulando la pregunta, sino **invirtiendo el post: aportar el dato en lugar de pedirlo.** Los 32 hilos leídos son dato específico de Woo y hacen del post una contribución. La pregunta va detrás.
 
-> **Title:** I went through 32 support threads for Google Listings & Ads — here's what people are actually reporting
+> **Title:** Went down a rabbit hole in the Google Listings & Ads support forum — what people complain about most isn't what I expected
 >
-> I've been reading the support forum for the official Google Listings & Ads plugin and the pattern wasn't what I expected, so I'm posting the breakdown in case it saves someone else the reading.
+> A few days ago I fell into the support threads for the official Google Listings & Ads plugin and ended up reading far more of them than I meant to. Around 32 in the end. I don't run a store myself, I just got curious about how Woo stores actually connect to Shopping, and there's a lot more friction in that pipeline than I'd assumed.
 >
-> Out of 32 threads:
+> What I expected going in was that most of the pain would be disapprovals — Google rejecting products over data issues. That's what every article about feeds is about.
 >
-> - Products not syncing at all was by far the most common — dashboards reading `Active 0, Pending 0, Disapproved 0, Not Synced 262`
-> - "0 products successfully submitted to Google" came up repeatedly
-> - Fatal errors or a white screen in wp-admin after activation, several times
-> - Not being able to reconnect an existing Merchant Center account after OAuth
-> - One severe case: the entire catalogue resubmitted hourly, ~190,000 Action Scheduler tasks queued
-> - Only **1 thread out of 32** was about products being *disapproved*
+> It's basically not that. Out of the 32 threads, exactly one was about disapprovals.
 >
-> That last one is what surprised me. I'd assumed disapprovals would dominate and they don't, at least not here. My guess is that people with disapproval problems go to Merchant Center help instead of the plugin forum, but that's a guess.
+> What people are actually frustrated about:
 >
-> So, for anyone running a Woo store on Shopping: when the sync does nothing and the dashboard just shows a `Not Synced` count, how do you work out which product or which field is behind it? Does the plugin surface that somewhere I haven't found, or is exporting the CSV the normal answer?
+> - Products just… not syncing. By far the most common. Dashboard sitting at `Active 0, Pending 0, Disapproved 0, Not Synced 262` with nothing explaining why.
+> - "0 products successfully submitted to Google", over and over, with no error to go on
+> - Fatal errors or a white screen in wp-admin after activating or updating
+> - OAuth failing to reconnect an existing Merchant Center account
+> - One person had the whole catalogue resubmitting every hour with ~190,000 Action Scheduler tasks stacked up
+>
+> The thing that stuck with me is that most of them aren't stuck on a hard problem. They're stuck on not knowing *which* thing is broken. The dashboard hands them a number and no thread to pull.
+>
+> My guess for why disapprovals barely show up is that those people go to Merchant Center help instead of the plugin forum. But that's a guess — could just be that I read a skewed sample.
+>
+> So, for people actually running Woo on Shopping: when the sync silently does nothing, how do you work out which product or which field is behind it? Is there something in the plugin logs I missed, or is exporting the CSV and eyeballing it genuinely the normal answer?
 
 **Requisito antes de publicarlo**: los números hay que poder defenderlos. Si alguien pide los hilos, hay que tenerlos. Recorrer el foro personalmente antes de publicar y quedarse con los enlaces.
 
