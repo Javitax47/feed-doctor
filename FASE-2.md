@@ -127,6 +127,82 @@ Campo trampa `_gotcha` incluido: el plan gratuito son 50 envíos al mes y el spa
 
 **Corrección de la versión anterior de este borrador**: incluía la frase *"yo he acabado exportando el CSV y mirándolo a mano, con 200 referencias es tedioso"*. Escrita dando por supuesto un perfil de comerciante en activo. No aplica —no hay tienda, no hay CSV— y convertía el post en la impostura que este apartado descarta. Eliminada.
 
+## Variantes por canal
+
+Los subs de WooCommerce, PPC y Google Ads son **anglófonos**. El texto de arriba solo vale para los grupos de Facebook en español.
+
+### A · r/woocommerce (inglés) — ángulo técnico
+
+> **Title:** How do you find out *which* products Merchant Center is rejecting?
+>
+> I'm a student thinking about building a small tool, and I'd rather ask first in case this is already solved and I'd be wasting my time.
+>
+> I've been reading through the Google Listings & Ads support forum and two things keep coming up. One is dashboards showing `Active 0, Pending 0, Disapproved 0, Not Synced 262` with no indication of what's actually wrong. The other is stores where products do sync but a chunk gets disapproved with a generic "product data issues" and no list.
+>
+> For those of you actually selling on Shopping: how do you track down the specific product that's failing, and why? Does Merchant Center tell you directly and I'm just missing it? Does your agency deal with it? Or do you export the CSV and go through it by hand?
+>
+> Genuinely asking — if Merchant Center already makes this obvious, there's nothing to build.
+
+### B · r/PPC · r/GoogleAds (inglés) — ángulo agencia
+
+> **Title:** Agencies — how do you handle Merchant Center disapprovals across multiple clients?
+>
+> Student here, considering building a small diagnostic tool. Asking before I write any code in case this is already a solved problem.
+>
+> What I keep seeing described: Merchant Center reports a chunk of the catalogue disapproved for "product data issues", and finding which SKUs and which field is the actual work. Tedious for one store. I'd assume it compounds across 5-10 client accounts.
+>
+> How do you do it today — a feed platform you already pay for (Channable, DataFeedWatch, Feedonomics), the Content API, spreadsheets, or just the Merchant Center UI?
+>
+> And the honest version of the question: is this a real time sink for you, or does the tooling you already have handle it fine?
+
+### C · Grupo de Facebook de WooCommerce en español — corto
+
+> Pregunta para quien venda en Google Shopping.
+>
+> Soy estudiante y estoy valorando montar una herramienta pequeña, pero prefiero preguntar antes de ponerme, por si ya está resuelto.
+>
+> Cuando Merchant Center os desaprueba productos, o directamente no sube nada y solo veis "Not Synced", ¿cómo averiguáis qué producto concreto falla y por qué?
+>
+> ¿Se ve claro en Merchant Center, lo lleva la agencia, o acabáis con el CSV a mano?
+>
+> Si Merchant Center ya lo dice bien, decídmelo y me ahorro el trabajo.
+
+### D · Agencias españolas de Google Ads — correo o DM, uno a uno
+
+> **Asunto:** Pregunta rápida sobre Merchant Center (no vendo nada)
+>
+> Hola [nombre]:
+>
+> Soy estudiante y estoy valorando montar una herramienta de diagnóstico de feeds de Shopping. Antes de escribir código quiero saber si el problema existe de verdad, y vosotros lo veis multiplicado por cliente.
+>
+> Una sola pregunta: cuando a un cliente le desaprueban parte del catálogo, o el feed no sube y solo aparece "Not Synced", ¿cómo localizáis el producto y el campo concreto que falla? ¿Con la plataforma de feeds que ya uséis, con la Content API, o a mano?
+>
+> Si la respuesta es "se resuelve en dos minutos y no es un problema", también me sirve y os dejo en paz.
+>
+> Gracias,
+> Javier
+
+### E · Comentario en un hilo ajeno — ayudar primero, preguntar después
+
+No abre hilo. Se usa cuando alguien **ya está describiendo el problema**.
+
+> [Primero, responder de verdad a lo que preguntan, si se sabe.]
+>
+> Out of curiosity — once you found which product was causing it, how did you track it down? I'm looking at building something small in this area and I'm trying to work out whether that step is actually painful or whether Merchant Center makes it obvious.
+
+**Nunca en el foro de soporte de WordPress.org.** Ahí los hilos son peticiones de ayuda; colar una pregunta propia es secuestrar el hilo y se sanciona. Ese foro es solo de lectura.
+
+### Qué respuesta mata el proyecto
+
+| Respuesta dominante | Lectura |
+|---|---|
+| "Merchant Center ya te lo dice, mira en Diagnostics" | Hipótesis falsa. Fase 1. |
+| "Lo hace la plataforma de feeds que ya pago" | Falsa para el segmento que paga. Queda mirar si hay uno que no paga. |
+| "Exporto el CSV y lo miro a mano" | Hipótesis viva. |
+| "Es un infierno y no encuentro nada" | Hipótesis viva y con urgencia. |
+| Silencio con impresiones altas | Sin dolor. Fase 1. |
+| Silencio con impresiones bajas | Sin medir. Otro canal. |
+
 ## Requisito previo de la cuenta
 
 Cuenta de Reddit antigua pero con cero interacción. La mayoría de subs de nicho filtran por **karma de comentarios**, no por antigüedad: con 0, el post puede no llegar a publicarse y el silencio resultante no significaría nada.
