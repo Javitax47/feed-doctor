@@ -64,22 +64,17 @@ Un "me gusta" no es una compra. Ya nos costó cinco rondas aprenderlo.
 
 **Plazo: 14 días desde publicar.** Sin señal, se vuelve a fase 1 con el siguiente candidato — no se construye igualmente.
 
-## Publicar, coste 0 €
+## Publicada — coste 0 €
 
-GitHub Pages sirve HTML estático gratis. El dominio de 10 € es opcional y puede esperar a que la puerta pase.
+**https://javitax47.github.io/feed-doctor/**
 
-```
-cd C:\Users\Javier\Desktop\Income\feed-doctor
-git init
-git add -A
-git commit -m "landing: feed doctor demand test"
-gh repo create feed-doctor --public --source=. --remote=origin --push
-gh api -X POST repos/Javitax47/feed-doctor/pages -f "source[branch]=master" -f "source[path]=/"
-```
+Repositorio `Javitax47/feed-doctor`, servido por GitHub Pages. Coste cero; el dominio de 10 € es opcional y puede esperar a que la puerta pase.
 
-Queda en `https://javitax47.github.io/feed-doctor/`.
+**Integración de Formspree**: endpoint `mwvgjjee`, guía Basic HTML. Se descartó el SDK de AJAX a propósito: es un fichero estático sin bundler, y traer una dependencia por CDN no aporta nada que el `action` no haga ya. El `fetch()` que hay es mejora progresiva sobre ese `action` — con JavaScript desactivado el formulario sigue enviando, solo que navegando fuera.
 
-**Antes de publicar**: crear cuenta gratuita en formspree.io y sustituir `REEMPLAZAR` en el `action` del formulario. Sin eso el formulario no recoge nada.
+Campo trampa `_gotcha` incluido: el plan gratuito son 50 envíos al mes y el spam consume cuota.
+
+**Pendiente y no trivial**: Formspree exige confirmar el correo la primera vez. Envía un email de verificación con el primer envío y **no reenvía nada hasta que se confirme**. Hay que rellenar el formulario una vez con el correo propio y confirmarlo, antes de difundir el enlace. En una prueba de 14 días, la primera respuesta puede ser la única.
 
 ---
 
