@@ -107,19 +107,44 @@ Campo trampa `_gotcha` incluido: el plan gratuito son 50 envíos al mes y el spa
 
 ## Texto para los canales en español
 
-**Post en grupo de WooCommerce / Reddit español** — pregunta, no anuncio. Reescrito tras el paso 1 con el vocabulario que usa la gente de verdad, y deliberadamente abierto a los dos problemas para no inducir la respuesta:
+**Post en grupo de WooCommerce / Reddit español** — pregunta, no anuncio.
 
-> Cuando Merchant Center no os sube los productos, ¿cómo averiguáis por qué?
+> Estoy valorando montar una herramienta pequeña y prefiero preguntar antes de escribir código, por si ya está resuelto y me ahorro el trabajo.
 >
-> Me refiero a los dos casos. El panel que pone **Active 0, Pending 0, Disapproved 0, Not Synced 262** y ninguna pista de qué pasa. Y el otro, cuando sí suben pero te desaprueban una parte y solo te dicen "problemas de datos de producto", sin decirte cuáles.
+> Leyendo el foro de soporte del plugin de Google me encuentro mucho esto: paneles con **Active 0, Pending 0, Disapproved 0, Not Synced 262** y ninguna pista de qué falla. Y por otro lado, gente a la que sí le suben los productos pero le desaprueban una parte con un "problemas de datos de producto" sin decir cuáles.
 >
-> Yo he acabado exportando el CSV y mirándolo a mano. Con 200 referencias es tedioso; con 2.000 es inviable.
+> Los que vendéis en Shopping: ¿cómo averiguáis qué producto concreto falla y por qué? ¿Lo dice Merchant Center directamente y me estoy perdiendo algo, lo lleva la agencia, o acabáis exportando el CSV y mirándolo a mano?
 >
-> ¿Lo resolvéis con alguna herramienta, con la agencia, o a mano como yo? Pregunto antes de ponerme a montar nada.
+> Pregunto en serio: si Merchant Center ya lo dice claro, no tiene sentido que monte nada.
 
-**Por qué está redactado así**: menciona los dos síntomas con las palabras exactas del foro —`Not Synced`, `Disapproved 0`— sin decidir cuál duele más. Si responden mayoritariamente sobre uno, eso decide el producto. Si el post afirmara cuál es el problema, la respuesta ya no sería información.
+**Por qué está redactado así.** Tres decisiones, cada una por un motivo:
+
+1. **Dice la verdad sobre quién escribe.** Un estudiante valorando construir algo, no un comerciante con tienda. Cualquier versión encubierta —"hago como que soy principiante", "pregunto qué analizador es más barato"— se cae en la primera respuesta que pregunte de vuelta *qué versión del plugin usas* o *cuántas referencias tienes*, y desaparecer del hilo es el patrón que delata a un bot. Una cuenta antigua sin comentarios que abre con una pregunta dirigida sobre una categoría de producto es, además, el perfil exacto del marketero infiltrado: si un moderador lo marca, el canal se pierde entero.
+2. **Se puede falsar.** *"Eso ya te lo dice Merchant Center, no montes nada"* es una respuesta válida y es información de primera. La versión encubierta —"¿cuál es el mejor analizador?"— no puede recibirla: devuelve recomendaciones de herramientas, que es competencia ya medida arriba, y presupone que la categoría es correcta. Ese formato fabrica su propio resultado.
+3. **Nombra los dos síntomas con las palabras exactas del foro** —`Not Synced`, `Disapproved 0`— sin decidir cuál duele más. Si responden mayoritariamente sobre uno, eso decide el producto. Si el post afirmara cuál es el problema, la respuesta ya no sería información.
 
 **Regla al responder**: si alguien pregunta qué estás montando, entonces sí enlazas. Si no pregunta nadie, el enlace no aparece — y eso es información, no fracaso.
+
+**Corrección de la versión anterior de este borrador**: incluía la frase *"yo he acabado exportando el CSV y mirándolo a mano, con 200 referencias es tedioso"*. Escrita dando por supuesto un perfil de comerciante en activo. No aplica —no hay tienda, no hay CSV— y convertía el post en la impostura que este apartado descarta. Eliminada.
+
+## Requisito previo de la cuenta
+
+Cuenta de Reddit antigua pero con cero interacción. La mayoría de subs de nicho filtran por **karma de comentarios**, no por antigüedad: con 0, el post puede no llegar a publicarse y el silencio resultante no significaría nada.
+
+Antes de publicar, una semana comentando de verdad. Perfil de programador: en r/woocommerce hay preguntas de PHP, hooks, rendimiento y errores de plugins que se pueden responder con conocimiento real. Cinco o seis respuestas útiles bastan.
+
+Normas de cada sub: leerlas en la barra lateral antes de publicar. Varios prohíben investigación de mercado o encuestas incluso sin enlace. Si r/woocommerce lo prohíbe, el canal es directamente los grupos de Facebook en español.
+
+## Distinguir "no hay demanda" de "no lo vio nadie"
+
+El silencio solo concluye algo si el post se vio. Anotar las **impresiones** (Reddit las da en las estadísticas del post; los grupos de Facebook dan alcance):
+
+| Observación | Lectura |
+|---|---|
+| ~400 vistas, 0 respuestas | Señal real. La puerta no pasa. Fase 1. |
+| ~12 vistas, 0 respuestas | No se ha medido nada. Republicar en otro canal. |
+
+Sin ese número, los 14 días no concluyen.
 
 ---
 
