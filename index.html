@@ -1,0 +1,178 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feed Doctor — know which products Google will reject, before you upload</title>
+<meta name="description" content="Scans your WooCommerce catalogue against Google Merchant Center rules and tells you exactly which products will be disapproved and why. In plain language, with the fix.">
+
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #14171a;
+    --muted: #5c6670;
+    --line: #e3e7ea;
+    --accent: #1a6b4a;
+    --accent-fg: #ffffff;
+    --bad: #a3302a;
+    --card: #f7f9fa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101315; --fg: #e8ecef; --muted: #9aa4ad; --line: #262c31;
+      --accent: #3fae7d; --accent-fg: #071310; --bad: #e0796f; --card: #171b1e;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 46rem; margin: 0 auto; padding: 0 1.25rem; }
+  header { padding: 4rem 0 2.5rem; border-bottom: 1px solid var(--line); }
+  .tag {
+    display: inline-block; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 2rem; padding: .25rem .7rem;
+    margin-bottom: 1.25rem;
+  }
+  h1 { font-size: clamp(1.85rem, 5vw, 2.6rem); line-height: 1.15; margin: 0 0 1rem; letter-spacing: -.02em; }
+  h2 { font-size: 1.3rem; margin: 3rem 0 1rem; letter-spacing: -.01em; }
+  h3 { font-size: 1rem; margin: 2rem 0 .5rem; }
+  .lead { font-size: 1.12rem; color: var(--muted); margin: 0; }
+  section { padding: .5rem 0 1rem; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .95rem; }
+  th, td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .9em; }
+  .scroll { overflow-x: auto; }
+  .report {
+    background: var(--card); border: 1px solid var(--line); border-radius: .5rem;
+    padding: 1rem 1.1rem; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .85rem; line-height: 1.7; overflow-x: auto; white-space: pre;
+  }
+  .bad { color: var(--bad); }
+  .plans { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin: 1.5rem 0; }
+  .plan { border: 1px solid var(--line); border-radius: .5rem; padding: 1.25rem; background: var(--card); }
+  .plan h3 { margin-top: 0; }
+  .price { font-size: 1.8rem; font-weight: 600; letter-spacing: -.02em; }
+  .price small { font-size: .85rem; font-weight: 400; color: var(--muted); }
+  .plan ul { padding-left: 1.1rem; margin: .75rem 0 0; }
+  .plan li { margin: .35rem 0; }
+  .cta { border: 1px solid var(--line); border-radius: .5rem; padding: 1.5rem; margin: 2.5rem 0; background: var(--card); }
+  .cta h2 { margin-top: 0; }
+  form { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
+  input[type=email] {
+    flex: 1 1 16rem; padding: .7rem .85rem; border: 1px solid var(--line);
+    border-radius: .4rem; background: var(--bg); color: var(--fg); font: inherit; font-size: .95rem;
+  }
+  button {
+    padding: .7rem 1.2rem; border: 0; border-radius: .4rem; background: var(--accent);
+    color: var(--accent-fg); font: inherit; font-weight: 600; cursor: pointer;
+  }
+  button:hover { opacity: .9; }
+  .note { font-size: .85rem; color: var(--muted); margin-top: .75rem; }
+  footer { border-top: 1px solid var(--line); margin-top: 3rem; padding: 2rem 0 4rem; color: var(--muted); font-size: .9rem; }
+  a { color: inherit; }
+</style>
+
+<div class="wrap">
+
+<header>
+  <span class="tag">Not built yet — see below</span>
+  <h1>Know which products Google will reject, before you upload.</h1>
+  <p class="lead">Feed Doctor scans your WooCommerce catalogue against Merchant Center rules and hands you a list: this product, this reason, this fix. No guessing which of your 2,000 items broke the feed.</p>
+</header>
+
+<section>
+  <h2>The problem isn't generating the feed</h2>
+  <p>Plenty of plugins generate feeds. What nobody tells you is <em>why 340 of your products got disapproved</em>, and Merchant Center's own diagnostics report the symptom, not the row that caused it.</p>
+  <p>The disapproval causes, in the order they actually occur:</p>
+  <table>
+    <thead><tr><th>Rank</th><th>Cause</th><th>Why it happens</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Price mismatch</td><td>Feed price, currency or availability disagrees with the landing page. Sale prices, tax display and currency rounding are the usual culprits.</td></tr>
+      <tr><td>2</td><td>Missing or invalid GTIN</td><td>Empty, wrong length, or failing the check digit. Products are dropped or heavily limited.</td></tr>
+      <tr><td>3</td><td>Image problems</td><td>Too small, watermarked, promotional text overlaid, placeholder, or a URL returning 404.</td></tr>
+      <tr><td>4</td><td>Missing attributes</td><td>Required fields absent for the product's category.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>What you get</h2>
+  <p>A report you can act on, per product, before Google ever sees the feed:</p>
+  <div class="report">catalogue scan — 2,417 products
+
+<span class="bad">418 will be disapproved</span>
+<span class="bad">193 will sync with reduced performance</span>
+1,806 are clean
+
+<span class="bad">GTIN_INVALID_CHECKSUM</span>      61 products
+  #1183  "Cafetera Espresso 15 bar"    ean 8412345678901
+         check digit is 1, computed 5 — one digit was mistyped
+
+<span class="bad">PRICE_MISMATCH</span>             147 products
+  #0902  feed says 24.79 EUR, page renders 29.99 EUR
+         cause: feed exports ex-VAT, storefront displays inc-VAT
+
+<span class="bad">IMAGE_TOO_SMALL</span>            88 products
+  #2210  480x480 — Google requires 250x250 minimum for apparel,
+         but 800x800 to avoid reduced visibility</div>
+  <p class="note">Every finding names the product, the field, the actual value, and what to change. That is the whole product.</p>
+</section>
+
+<section>
+  <h2>Built for European stores</h2>
+  <p>The existing tools are broad and shallow — one advertises 220 channels. Feed Doctor goes the other way and is deep on the things that break European catalogues:</p>
+  <ul>
+    <li><strong>VAT-inclusive vs exclusive pricing</strong>, the single most common source of price mismatch in the EU</li>
+    <li><strong>EAN-13 and EAN-8 check digits</strong>, not just "is the field filled in"</li>
+    <li>Per-country currency and decimal formatting</li>
+    <li>Sale price validity windows, which silently break feeds when a promotion expires</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Pricing</h2>
+  <div class="plans">
+    <div class="plan">
+      <h3>Free</h3>
+      <p class="price">€0</p>
+      <ul>
+        <li>Full catalogue scan</li>
+        <li>Count of problems by type</li>
+        <li>Ten example products per problem</li>
+        <li>No account, no card</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <h3>Pro</h3>
+      <p class="price">€29 <small>/ year, one store</small></p>
+      <ul>
+        <li>Every affected product listed, with the offending value</li>
+        <li>CSV export of the fix list</li>
+        <li>Scheduled re-scans</li>
+        <li>Five stores: €59/year</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">For comparison: CTX Feed Pro is $119/year for one site, DataFeedWatch starts at $59/month with no free tier. Feed Doctor does less than either — it does not generate or upload feeds. It tells you what is broken.</p>
+</section>
+
+<div class="cta">
+  <h2>It does not exist yet</h2>
+  <p>This page is here to find out whether it should. Nothing is built, there is no download, and there is no beta list I am trying to inflate.</p>
+  <p>If a tool like this would be useful to you, say so — and tell me what your feed actually gets rejected for, because that is what decides what gets built first.</p>
+  <form action="https://formspree.io/f/REEMPLAZAR" method="POST">
+    <input type="email" name="email" placeholder="your@email.com" required>
+    <input type="hidden" name="_subject" value="Feed Doctor — interest">
+    <button type="submit">Tell me when it exists</button>
+  </form>
+  <p class="note">One message when there is something to try. Nothing else, ever.</p>
+</div>
+
+<footer>
+  <p>Built by <a href="https://github.com/Javitax47">Javitax47</a>. Related: <a href="https://github.com/Javitax47/lead-cleaner">lead-cleaner</a>, a data normalization and deduplication engine with a public adversarial benchmark — same approach to validation, different domain.</p>
+  <p>Not affiliated with Google, Automattic or WooCommerce. WooCommerce is a trademark of Automattic Inc.</p>
+</footer>
+
+</div>
