@@ -131,17 +131,43 @@ Campo trampa `_gotcha` incluido: el plan gratuito son 50 envíos al mes y el spa
 
 Los subs de WooCommerce, PPC y Google Ads son **anglófonos**. El texto de arriba solo vale para los grupos de Facebook en español.
 
-### A · r/woocommerce (inglés) — ángulo técnico
+### A · r/woocommerce (inglés) — aportar el dato, no pedirlo
 
-> **Title:** How do you find out *which* products Merchant Center is rejecting?
+**Normas leídas el 31-jul-2026.** Condicionan el formato:
+
+| Norma | Efecto |
+|---|---|
+| **1 · Sin material promocional en posts** | Ni nombre, ni enlace, ni producto. En comentarios sí se permiten recomendaciones. |
+| **2 · Nada fuera de tema** | Anclar en el plugin `google-listings-and-ads`, que es extensión de Woo. Hablar de "Merchant Center" en abstracto deriva a comercio electrónico general y es retirable. |
+| **3 · Buen rollo, y respeto al ecosistema** | El dato es duro —49,6 % de valoraciones de una estrella—. Se presenta como *lo que la gente reporta*, no como *este plugin es basura*. |
+| **6 · Sin encuestas ni investigación** | **Prohíbe el formato "estoy valorando montar algo, ¿existe el problema?"**. Salvo excepción: *directly tied to Woo with clear Woo-specific data*. |
+
+La primera versión de este borrador —"I'm a student thinking about building a small tool, I'd rather ask first"— **infringe la norma 6 de frente**. Es investigación de mercado con otro nombre.
+
+La excepción de la 6 no se aprovecha disimulando la pregunta, sino **invirtiendo el post: aportar el dato en lugar de pedirlo.** Los 32 hilos leídos son dato específico de Woo y hacen del post una contribución. La pregunta va detrás.
+
+> **Title:** I went through 32 support threads for Google Listings & Ads — here's what people are actually reporting
 >
-> I'm a student thinking about building a small tool, and I'd rather ask first in case this is already solved and I'd be wasting my time.
+> I've been reading the support forum for the official Google Listings & Ads plugin and the pattern wasn't what I expected, so I'm posting the breakdown in case it saves someone else the reading.
 >
-> I've been reading through the Google Listings & Ads support forum and two things keep coming up. One is dashboards showing `Active 0, Pending 0, Disapproved 0, Not Synced 262` with no indication of what's actually wrong. The other is stores where products do sync but a chunk gets disapproved with a generic "product data issues" and no list.
+> Out of 32 threads:
 >
-> For those of you actually selling on Shopping: how do you track down the specific product that's failing, and why? Does Merchant Center tell you directly and I'm just missing it? Does your agency deal with it? Or do you export the CSV and go through it by hand?
+> - Products not syncing at all was by far the most common — dashboards reading `Active 0, Pending 0, Disapproved 0, Not Synced 262`
+> - "0 products successfully submitted to Google" came up repeatedly
+> - Fatal errors or a white screen in wp-admin after activation, several times
+> - Not being able to reconnect an existing Merchant Center account after OAuth
+> - One severe case: the entire catalogue resubmitted hourly, ~190,000 Action Scheduler tasks queued
+> - Only **1 thread out of 32** was about products being *disapproved*
 >
-> Genuinely asking — if Merchant Center already makes this obvious, there's nothing to build.
+> That last one is what surprised me. I'd assumed disapprovals would dominate and they don't, at least not here. My guess is that people with disapproval problems go to Merchant Center help instead of the plugin forum, but that's a guess.
+>
+> So, for anyone running a Woo store on Shopping: when the sync does nothing and the dashboard just shows a `Not Synced` count, how do you work out which product or which field is behind it? Does the plugin surface that somewhere I haven't found, or is exporting the CSV the normal answer?
+
+**Requisito antes de publicarlo**: los números hay que poder defenderlos. Si alguien pide los hilos, hay que tenerlos. Recorrer el foro personalmente antes de publicar y quedarse con los enlaces.
+
+**Qué se obtiene y qué no**: valida **el problema**, no **la demanda**. La norma 1 impide decir que estás construyendo algo, así que nadie preguntará precio y **la puerta de los 14 días no se pasa aquí**. La señal de demanda tiene que salir de los grupos de Facebook y de las agencias.
+
+**Hallazgo lateral, para después del test**: la norma 5 permite recomendar herramientas propias **en comentarios**, si responden a la pregunta concreta de alguien. Es un canal de distribución legítimo y permanente el día que el producto exista.
 
 ### B · r/PPC · r/GoogleAds (inglés) — ángulo agencia
 
