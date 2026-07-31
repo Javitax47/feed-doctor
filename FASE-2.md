@@ -168,6 +168,8 @@ La excepción de la 6 no se aprovecha disimulando la pregunta, sino **invirtiend
 >
 > So, for people actually running Woo on Shopping: when the sync silently does nothing, how do you work out which product or which field is behind it? Is there something in the plugin logs I missed, or is exporting the CSV and eyeballing it genuinely the normal answer?
 
+**Flair**: `Troubleshooting`. El cuerpo son problemas de diagnóstico y la pregunta final es de método, así que encaja — y aleja el post del olor a investigación que penaliza la norma 6. `How do I…?` es la segunda opción, aunque presupone tienda propia y el post dice que no la hay. **`Plugin recommendation` no**: sería falso y es el flair donde vive la autopromoción de la norma 5, así que pinta al autor buscando contra qué posicionarse. `Resolved` es flair de estado: se pone al final si alguien da la respuesta definitiva.
+
 **Requisito antes de publicarlo**: los números hay que poder defenderlos. Si alguien pide los hilos, hay que tenerlos. Recorrer el foro personalmente antes de publicar y quedarse con los enlaces.
 
 **Qué se obtiene y qué no**: valida **el problema**, no **la demanda**. La norma 1 impide decir que estás construyendo algo, así que nadie preguntará precio y **la puerta de los 14 días no se pasa aquí**. La señal de demanda tiene que salir de los grupos de Facebook y de las agencias.
